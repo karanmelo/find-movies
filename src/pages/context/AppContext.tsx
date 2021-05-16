@@ -5,7 +5,7 @@ import {
   useContext,
   useEffect,
 } from 'react';
-import Axios from "axios";
+import Axios, { CancelTokenSource } from "axios";
 
 import api from '../../services/api';
 
@@ -14,6 +14,17 @@ type ContextValue = {
 };
 
 const AppContext = createContext<ContextValue | undefined>(void 0);
+
+export interface IMovie {
+  title: string;
+  release_date: string;
+  overview: string;
+  popularity: number;
+  genre_ids: IGenre[];
+  original_language: string;
+  poster_path: string;
+  video: boolean;
+}
 
 export interface IGenre {
   id: number;
@@ -30,7 +41,7 @@ export function AppContextProvider(props: Props) {
 
   useEffect(() => {
     let mounted: boolean = true;
-    const currentRequest = Axios.CancelToken.source();
+    const currentRequest: CancelTokenSource = Axios.CancelToken.source();
 
     api
       .get('genre/movie/list',

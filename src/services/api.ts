@@ -5,6 +5,10 @@ const api = axios.create({
 });
 
 api.interceptors.request.use(async (config) => {
+  if (config.params === undefined) {
+    config.params = {};
+  }
+
   config.params.api_key = process.env.TMDB_API_KEY;
   config.params.language = process.env.TMDB_LANGUAGE;
 
