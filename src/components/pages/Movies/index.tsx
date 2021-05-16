@@ -157,7 +157,10 @@ const Movies: React.FC = () => {
       {executeSearch && <h1>Buscando Dados</h1>}
       {!executeSearch && currentMovies.map((movie: IMovie, idx: number) => {
         return (
-          <CardMovie key={idx} />
+          <CardMovie
+            key={idx}
+            movie={movie}
+          />
         )
       })}
     </Container>
