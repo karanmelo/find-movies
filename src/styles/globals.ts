@@ -2,15 +2,15 @@ import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`  
   :root {
-    --blue: #2463a5;
-    --light-blue: #87cefa;
-    --gray: #f3f3f3;
+    --blue: #116193;
+    --ocean-blue: #00e4e2;
+    --gray: #ebebeb;
+    --dark-gray: #b8cbd6;
   }
 
   * {
     margin: 0;
     padding: 0;
-    outline: 0;
     box-sizing: border-box;
   }
 

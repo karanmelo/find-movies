@@ -1,6 +1,8 @@
 import { AppProps } from 'next/app';
 
-import Layout from '../components/Layout/Layout'
+import { AppContextProvider } from './context/AppContext';
+
+import Layout from '../components/Layout/Layout';
 
 import GlobalStyles from '../styles/globals';
 
@@ -8,7 +10,9 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
       <Layout>
-        <Component {...pageProps} />
+        <AppContextProvider>
+          <Component {...pageProps} />
+        </AppContextProvider>
       </Layout>
       <GlobalStyles />
     </>
