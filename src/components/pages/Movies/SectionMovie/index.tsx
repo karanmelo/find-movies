@@ -3,20 +3,20 @@ import React from 'react';
 import Badge from '../../../Badge';
 import BadgeCircle from '../../../BadgeCircle';
 
-import { useAppContext, IGenre, IMovie } from '../../../../pages/context/AppContext';
+import { useAppContext, IMovie } from '../../../../pages/context/AppContext';
 
 import {
-  Card,
-  MainContent,
-  CardHeader,
-  CardContent,
+  Section,
+  Container,
+  Header,
+  Content,
 } from './styled';
 
 type CardMovieProps = {
   movie: IMovie;
 }
 
-const CardMovie: React.FC<CardMovieProps> = ({ movie }) => {
+const SectionMovie: React.FC<CardMovieProps> = ({ movie }) => {
   const {
     title,
     popularity,
@@ -27,24 +27,24 @@ const CardMovie: React.FC<CardMovieProps> = ({ movie }) => {
   } = movie;
   const { getGenreName } = useAppContext();
 
-  const releaseDate: string = release_date.replace(/(\d{4})-(\d{2})-(\d{2})/, "$3/$2/$1");
-  const _posterPath: string = `${process.env.TMDB_IMAGE_URL}/${poster_path}`;
+  const _releaseDate: string = release_date.replace(/(\d{4})-(\d{2})-(\d{2})/, "$3/$2/$1");
+  const _posterPath: string = poster_path ? `${process.env.TMDB_IMAGE_URL}/${poster_path}` : '';
   const _popularity: string = Math.round(popularity).toString().concat('%');
 
   return (
-    <Card>
+    <Section>
       <img src={_posterPath} alt="" />
-      <MainContent>
-        <CardHeader>
+      <Container>
+        <Header>
           <h1 className="title">
             {title}
           </h1>
           <div className="badge">
             <BadgeCircle title={_popularity} width="8rem" />
           </div>
-        </CardHeader>
-        <CardContent>
-          <span className="release-date">{releaseDate}</span>
+        </Header>
+        <Content>
+          <span className="release-date">{_releaseDate}</span>
           <p className="overview">{overview}</p>
           <div className="container-genres">
             {
@@ -56,10 +56,10 @@ const CardMovie: React.FC<CardMovieProps> = ({ movie }) => {
               )
             }
           </div>
-        </CardContent>
-      </MainContent>
-    </Card>
+        </Content>
+      </Container>
+    </Section>
   )
 }
 
-export default CardMovie;
+export default SectionMovie;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { mediaQueries } from '../../../../styles/mediaQueries';
 
-export const Card = styled.div`
+export const Section = styled.section`
   width: 100%;
   min-height: auto;
 
@@ -23,7 +23,7 @@ export const Card = styled.div`
   `};
 `;
 
-export const MainContent = styled.div`
+export const Container = styled.div`
   width: 100%;
   height: 100%;
 
@@ -35,7 +35,7 @@ export const MainContent = styled.div`
   `};
 `;
 
-export const CardHeader = styled.div`
+export const Header = styled.div`
   position: relative;
   width: 100%;
   height: 8rem;
@@ -66,7 +66,7 @@ export const CardHeader = styled.div`
   }
 `;
 
-export const CardContent = styled.div`
+export const Content = styled.div`
   position: relative;
   width: 100%;
   height: 100%;

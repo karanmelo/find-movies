@@ -4,7 +4,7 @@ import { useAppContext, IMovie, IGenre } from '../../../pages/context/AppContext
 import api from '../../../services/api';
 
 import SearchBar from './SearchBar';
-import CardMovie from './CardMovie/CardMovie';
+import SectionMovie from './SectionMovie';
 
 import { Container } from './styled';
 
@@ -160,7 +160,7 @@ const Movies: React.FC = () => {
       {executeSearch && <h1>Buscando Dados</h1>}
       {!executeSearch && currentMovies.map((movie: IMovie, idx: number) => {
         return (
-          <CardMovie
+          <SectionMovie
             key={idx}
             movie={movie}
           />
