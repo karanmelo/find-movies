@@ -4,6 +4,7 @@ import { AxiosResponse } from 'axios';
 import api from '../../../services/api';
 
 import SectionInformation from './SectionInformation';
+import Spinner from '../../Spinner';
 
 import { translationMoviesStatus, ITranslationMoviesStatus } from './constants/translationMoviesStatus';
 
@@ -48,7 +49,13 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ id }) => {
   }, [id]);
 
   if (movieDetails === null) {
-    return <h1>Filme não encontrado</h1>;
+    return (
+      <div
+        style={{ width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}
+      >
+        <Spinner />
+      </div>
+    );
   }
 
   const {
@@ -68,7 +75,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ id }) => {
   } = movieDetails;
 
   const _releaseDate: string = release_date.replace(/(\d{4})-(\d{2})-(\d{2})/, "$3/$2/$1");
-  const _posterPath: string = `${process.env.TMDB_IMAGE_URL}/${poster_path}`;
+  const _posterPath: string = poster_path ? `${process.env.TMDB_IMAGE_URL}${poster_path.replace('/', '')}` : '/no-image-available.jpg';
   const _popularity: string = Math.round(popularity).toString().concat('%');
   const _status: ITranslationMoviesStatus = translationMoviesStatus.find((translate: ITranslationMoviesStatus) => {
     return status.toLowerCase() === translate.status;

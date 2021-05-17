@@ -12,6 +12,7 @@ const Movies: React.FC = () => {
   const [search, setSearch] = useState<string>('');
   const [currentMovies, setCurrentMovies] = useState<IMovie[]>([]);
   const [executeSearch, setExecuteSearch] = useState<boolean>(false);
+  const [alreadyResearched, setAlreadyResearched] = useState<boolean>(false);
   const { movies, setMovies, genres } = useAppContext();
 
   const filterGenresToSearch = (): IGenre[] => {
@@ -87,6 +88,8 @@ const Movies: React.FC = () => {
         });
 
       generateMovies(newMovies);
+
+      if (!alreadyResearched) setAlreadyResearched(true);
     }
 
     if (moviesByGenres !== null) {
@@ -112,17 +115,37 @@ const Movies: React.FC = () => {
   }
 
   useEffect(() => {
+    let mounted: boolean = true;
+
     if (movies.length > 0) {
+      if (!mounted) return;
+
       setCurrentMovies(pagination(0, 5));
       return;
     }
 
+    if (!mounted) return;
+
     setCurrentMovies([]);
+
+    return () => {
+      mounted = false;
+    }
   }, [movies]);
 
   useEffect(() => {
+    let mounted: boolean = true;
+
     if (search === '') {
+      if (!mounted) return;
+
       setMovies([]);
+
+      if (alreadyResearched) setAlreadyResearched(false);
+    }
+
+    return () => {
+      mounted = false;
     }
   }, [search]);
 
@@ -151,6 +174,7 @@ const Movies: React.FC = () => {
   return (
     <Container>
       <SearchBar
+        autoFocus
         id="search-movies"
         placeholder="Busque um filme por nome ou gênero..."
         value={search}
@@ -158,6 +182,19 @@ const Movies: React.FC = () => {
         onKeyPress={(event) => handleKeyPressOnSearch(event.code)}
       />
       {executeSearch && <h1>Buscando Dados</h1>}
+      {!executeSearch
+        && search.length > 0
+        && currentMovies.length === 0
+        && alreadyResearched
+        &&
+        (
+          <img
+            src="/no-results-found.png"
+            alt="No resuts found :("
+            style={{ width: "50%", alignSelf: "center" }}
+          />
+        )
+      }
       {!executeSearch && currentMovies.map((movie: IMovie, idx: number) => {
         return (
           <SectionMovie

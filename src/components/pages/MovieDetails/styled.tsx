@@ -66,6 +66,7 @@ export const Content = styled.div`
 
   & .details {
     position: relative;
+    width: 100%;
     height: 100%;
     padding: 3.3rem 3.5rem 3rem 4.5rem;
 

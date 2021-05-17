@@ -30,7 +30,7 @@ const SectionMovie: React.FC<CardMovieProps> = ({ movie }) => {
   const { getGenreName } = useAppContext();
 
   const _releaseDate: string = release_date.replace(/(\d{4})-(\d{2})-(\d{2})/, "$3/$2/$1");
-  const _posterPath: string = poster_path ? `${process.env.TMDB_IMAGE_URL}/${poster_path}` : '';
+  const _posterPath: string = poster_path ? `${process.env.TMDB_IMAGE_URL}${poster_path.replace('/', '')}` : '';
   const _popularity: string = Math.round(popularity).toString().concat('%');
 
   const handleClickGoToMovieDetails = () => {
