@@ -1,5 +1,5 @@
+import { NextRouter, useRouter } from 'next/router';
 
-import React from 'react';
 import Badge from '../../../Badge';
 import BadgeCircle from '../../../BadgeCircle';
 
@@ -17,7 +17,9 @@ type CardMovieProps = {
 }
 
 const SectionMovie: React.FC<CardMovieProps> = ({ movie }) => {
+  const router: NextRouter = useRouter();
   const {
+    id,
     title,
     popularity,
     release_date,
@@ -31,8 +33,12 @@ const SectionMovie: React.FC<CardMovieProps> = ({ movie }) => {
   const _posterPath: string = poster_path ? `${process.env.TMDB_IMAGE_URL}/${poster_path}` : '';
   const _popularity: string = Math.round(popularity).toString().concat('%');
 
+  const handleClickGoToMovieDetails = () => {
+    router.push(`movie/${id}`);
+  }
+
   return (
-    <Section>
+    <Section onClick={() => handleClickGoToMovieDetails()}>
       <img src={_posterPath} alt="" />
       <Container>
         <Header>

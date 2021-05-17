@@ -19,7 +19,7 @@ const Container = styled.span`
   color: var(--blue);
 `;
 
-type BadgeProps = {
+interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   title: string;
 }
 

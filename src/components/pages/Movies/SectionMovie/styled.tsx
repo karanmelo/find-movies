@@ -10,6 +10,13 @@ export const Section = styled.section`
   align-items: center;
 
   background-color: var(--gray);
+  transition: .3s all;
+
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 
   & > img {
     width: 23.3rem;
