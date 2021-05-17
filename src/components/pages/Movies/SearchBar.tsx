@@ -18,7 +18,7 @@ const Input = styled.input`
   opacity: 1;
 
   &::placeholder {
-    color: var(--light-gray);
+    color: var(--light-blue);
     font-weight: bold;
     letter-spacing: 0px;
   }

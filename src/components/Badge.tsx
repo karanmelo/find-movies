@@ -14,7 +14,7 @@ const Container = styled.span`
   border-radius: 2rem;
 
   text-align: center;
-  font: normal normal 1.4rem/1.6rem Abel;
+  font: normal normal bold 1.4rem/1.6rem Abel;
   letter-spacing: 0px;
   color: var(--blue);
 `;

@@ -7,7 +7,7 @@ type ContainerProps = {
 const Container = styled.div<ContainerProps>`
   width: ${(props: ContainerProps) => props.width};
   height: ${(props: ContainerProps) => props.width};
-  padding: .2rem;
+  padding: .3rem;
 
   display: flex;
   justify-content: center;
@@ -30,7 +30,7 @@ const Container = styled.div<ContainerProps>`
     justify-content: center;
     align-items: center;
   
-    border: .4rem solid var(--ocean-blue);
+    border: .5rem solid var(--ocean-blue);
     border-radius: 50%;
     
     font: normal normal 2.6rem/2.6em Abel;

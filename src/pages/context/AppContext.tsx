@@ -5,6 +5,8 @@ import {
   useContext,
   useEffect,
   useCallback,
+  Dispatch,
+  SetStateAction,
 } from 'react';
 import Axios, { CancelTokenSource } from "axios";
 
@@ -12,12 +14,16 @@ import api from '../../services/api';
 
 type ContextValue = {
   genres: IGenre[];
+  movies: IMovie[];
+  setMovies: Dispatch<SetStateAction<IMovie[]>>;
   getGenreName: (genreId: number) => string;
+  getMovieDetails: (id: number) => IMovie | null;
 };
 
 const AppContext = createContext<ContextValue | undefined>(void 0);
 
 export interface IMovie {
+  id: number;
   title: string;
   release_date: string;
   overview: string;
@@ -39,6 +45,7 @@ type Props = {
 
 export function AppContextProvider(props: Props) {
   const { children } = props;
+  const [movies, setMovies] = useState<IMovie[]>([]);
   const [genres, setGenres] = useState<IGenre[]>([]);
 
   const getGenreName = useCallback((genreId: number): string => {
@@ -50,6 +57,20 @@ export function AppContextProvider(props: Props) {
 
     return genreName.name;
   }, [genres]);
+
+  const getMovieDetails = useCallback((id: number): IMovie | null => {
+    
+  alert(id)
+  console.log(movies)
+    const movie: IMovie | undefined = movies
+      .find((movie: IMovie) => {
+        return id === movie.id;
+      });
+
+    if (!movie) return null;
+
+    return movie;
+  }, [movies]);
 
   useEffect(() => {
     let mounted: boolean = true;
@@ -82,7 +103,10 @@ export function AppContextProvider(props: Props) {
 
   const value = {
     genres,
+    movies,
+    setMovies,
     getGenreName,
+    getMovieDetails,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

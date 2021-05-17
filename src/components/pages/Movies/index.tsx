@@ -10,10 +10,9 @@ import { Container } from './styled';
 
 const Movies: React.FC = () => {
   const [search, setSearch] = useState<string>('');
-  const [movies, setMovies] = useState<IMovie[]>([]);
   const [currentMovies, setCurrentMovies] = useState<IMovie[]>([]);
   const [executeSearch, setExecuteSearch] = useState<boolean>(false);
-  const { genres } = useAppContext();
+  const { movies, setMovies, genres } = useAppContext();
 
   const filterGenresToSearch = (): IGenre[] => {
     return genres.filter((value: IGenre, index: number, array: IGenre[]) => {
@@ -75,6 +74,7 @@ const Movies: React.FC = () => {
         })
         .map((movie: IMovie): IMovie => {
           return {
+            id: movie.id,
             title: movie.title,
             genre_ids: movie.genre_ids,
             original_language: movie.original_language,
@@ -94,6 +94,7 @@ const Movies: React.FC = () => {
         const newMovies: IMovie[] = moviesByGenres.data.results
           .map((movie: IMovie): IMovie => {
             return {
+              id: movie.id,
               title: movie.title,
               genre_ids: movie.genre_ids,
               original_language: movie.original_language,
