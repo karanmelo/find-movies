@@ -5,7 +5,9 @@ export default createGlobalStyle`
     --blue: #116193;
     --ocean-blue: #00e4e2;
     --gray: #ebebeb;
-    --dark-gray: #b8cbd6;
+    --light-gray: #b8cbd6;
+    --mediun-gray: #919191;
+    --dark-gray: #626262;
   }
 
   * {

@@ -22,7 +22,7 @@ const Movies: React.FC = () => {
   }
 
   const pagination = (page: number, offset: number) => {
-    return movies.slice(page * offset, ((page * offset) + offset))
+    return movies.slice(page * offset, ((page * offset) + offset));
   }
 
   const generateMovies = (_movies: IMovie[]) => {
@@ -68,7 +68,10 @@ const Movies: React.FC = () => {
     if (moviesByTitle.status === 200) {
       const newMovies: IMovie[] = moviesByTitle.data.results
         .filter((movie: IMovie) => {
-          return movie.title.toUpperCase().indexOf(search.toUpperCase()) > -1;
+          const _title: string = movie.title.toUpperCase().replace(/[0-9!@#¨$%^&*)(+=._-]+/g, ' ');
+          const _valueToSearch: string = search.toUpperCase().replace(/[0-9!@#¨$%^&*)(+=._-]+/g, ' ');
+
+          return _title.indexOf(_valueToSearch) > -1;
         })
         .map((movie: IMovie): IMovie => {
           return {
@@ -88,7 +91,7 @@ const Movies: React.FC = () => {
 
     if (moviesByGenres !== null) {
       if (moviesByGenres.status === 200) {
-        const newMovies = moviesByGenres.data.results
+        const newMovies: IMovie[] = moviesByGenres.data.results
           .map((movie: IMovie): IMovie => {
             return {
               title: movie.title,
@@ -109,7 +112,7 @@ const Movies: React.FC = () => {
 
   useEffect(() => {
     if (movies.length > 0) {
-      setCurrentMovies(pagination(1, 5));
+      setCurrentMovies(pagination(0, 5));
       return;
     }
 
@@ -139,11 +142,10 @@ const Movies: React.FC = () => {
 
   const handleKeyPressOnSearch = (code: string) => {
     if (code === 'Enter') {
+      setMovies([]);
       setExecuteSearch(true);
     }
   }
-
-  console.log(movies)
 
   return (
     <Container>

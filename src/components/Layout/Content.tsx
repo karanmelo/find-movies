@@ -5,7 +5,7 @@ const Section = styled.section`
   height: 100%;
   padding: 6rem;
 
-  overflow-y: hidden;
+  overflow-y: auto;
 `;
 const Content: React.FC = ({ children }) => (
   <Section>

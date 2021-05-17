@@ -4,6 +4,7 @@ import {
   useState,
   useContext,
   useEffect,
+  useCallback,
 } from 'react';
 import Axios, { CancelTokenSource } from "axios";
 
@@ -11,6 +12,7 @@ import api from '../../services/api';
 
 type ContextValue = {
   genres: IGenre[];
+  getGenreName: (genreId: number) => string;
 };
 
 const AppContext = createContext<ContextValue | undefined>(void 0);
@@ -20,7 +22,7 @@ export interface IMovie {
   release_date: string;
   overview: string;
   popularity: number;
-  genre_ids: IGenre[];
+  genre_ids: number[];
   original_language: string;
   poster_path: string;
   video: boolean;
@@ -38,6 +40,16 @@ type Props = {
 export function AppContextProvider(props: Props) {
   const { children } = props;
   const [genres, setGenres] = useState<IGenre[]>([]);
+
+  const getGenreName = useCallback((genreId: number): string => {
+    const genreName: IGenre | undefined = genres.find((genre: IGenre) => {
+      return genreId === genre.id;
+    });
+
+    if (!genreName) return '';
+
+    return genreName.name;
+  }, [genres]);
 
   useEffect(() => {
     let mounted: boolean = true;
@@ -70,6 +82,7 @@ export function AppContextProvider(props: Props) {
 
   const value = {
     genres,
+    getGenreName,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

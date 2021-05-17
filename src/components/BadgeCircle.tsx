@@ -30,10 +30,10 @@ const Container = styled.div<ContainerProps>`
     justify-content: center;
     align-items: center;
   
-    border: .3rem solid var(--ocean-blue);
+    border: .4rem solid var(--ocean-blue);
     border-radius: 50%;
     
-    font: normal normal 2rem/2.2rem Abel;
+    font: normal normal 2.6rem/2.6em Abel;
     color: var(--ocean-blue);
   }
 `;
