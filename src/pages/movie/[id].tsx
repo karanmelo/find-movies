@@ -1,3 +1,4 @@
+import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 
@@ -15,7 +16,7 @@ const PageLost = styled.div`
   }
 `;
 
-const MovieDetails: React.FC = () => {
+const MovieDetails: NextPage = () => {
   const router = useRouter();
   const { id } = router.query;
 
@@ -37,6 +38,10 @@ const MovieDetails: React.FC = () => {
   return (
     <Movie id={Number.parseInt(id)} />
   )
+}
+
+MovieDetails.getInitialProps = async (_ctx) => {
+  return {};
 }
 
 export default MovieDetails;
