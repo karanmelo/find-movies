@@ -1,6 +1,6 @@
 import { useEffect, useState, ChangeEvent, KeyboardEvent} from 'react';
 
-import { useAppContext, IMovie, IGenre } from '../../../pages/context/AppContext';
+import { useAppContext, IMovie, IGenre } from '../context/AppContext';
 import api from '../../../services/api';
 
 import SearchBar from './SearchBar';

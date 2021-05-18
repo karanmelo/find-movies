@@ -1,6 +1,6 @@
 import { AppProps } from 'next/app';
 
-import { AppContextProvider } from './context/AppContext';
+import { AppContextProvider } from '../components/pages/context/AppContext';
 
 import Layout from '../components/Layout/Layout';
 

@@ -10,7 +10,7 @@ import {
 } from 'react';
 import Axios, { CancelTokenSource } from "axios";
 
-import api from '../../services/api';
+import api from '../../../services/api';
 
 type ContextValue = {
   genres: IGenre[];

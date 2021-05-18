@@ -3,7 +3,7 @@ import { NextRouter, useRouter } from 'next/router';
 import Badge from '../../../Badge';
 import BadgeCircle from '../../../BadgeCircle';
 
-import { useAppContext, IMovie } from '../../../../pages/context/AppContext';
+import { useAppContext, IMovie } from '../../context/AppContext';
 
 import {
   Section,
