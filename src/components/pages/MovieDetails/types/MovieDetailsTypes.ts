@@ -26,3 +26,13 @@ export interface ISpokenLanguage {
   iso_639_1: string;
   name: string;
 }
+
+export interface IVideo {
+  id: string;
+  key: string
+  iso_639_1: string;
+  iso_3166_1: string;
+  name: string;
+  site: string;
+  type: string;
+}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, ChangeEvent, KeyboardEvent} from 'react';
 
 import { useAppContext, IMovie, IGenre } from '../../../pages/context/AppContext';
 import api from '../../../services/api';
@@ -164,8 +164,8 @@ const Movies: React.FC = () => {
     }
   }, [executeSearch]);
 
-  const handleKeyPressOnSearch = (code: string) => {
-    if (code === 'Enter') {
+  const handleKeyPressOnSearch = (key: string) => {
+    if (key === 'Enter') {
       setMovies([]);
       setExecuteSearch(true);
     }
@@ -178,8 +178,8 @@ const Movies: React.FC = () => {
         id="search-movies"
         placeholder="Busque um filme por nome ou gênero..."
         value={search}
-        onChange={(event) => setSearch(event.target.value)}
-        onKeyPress={(event) => handleKeyPressOnSearch(event.code)}
+        onChange={(event: ChangeEvent<HTMLInputElement>) => setSearch(event.target.value)}
+        onKeyPress={(event: KeyboardEvent<HTMLInputElement>) => handleKeyPressOnSearch(event.key)}
       />
       {executeSearch && <h1>Buscando Dados</h1>}
       {!executeSearch

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AxiosResponse } from 'axios';
 
 import api from '../../../services/api';
@@ -8,7 +8,7 @@ import Spinner from '../../Spinner';
 
 import { translationMoviesStatus, ITranslationMoviesStatus } from './constants/translationMoviesStatus';
 
-import { IMovie, ISpokenLanguage } from './types/MovieDetailsTypes';
+import { IMovie, ISpokenLanguage, IVideo } from './types/MovieDetailsTypes';
 
 import {
   Section,
@@ -16,6 +16,7 @@ import {
   Header,
   Content,
   SectionSynopsis,
+  Trailler,
 } from './styled';
 
 type MovieDetailsProps = {
@@ -24,6 +25,7 @@ type MovieDetailsProps = {
 
 const MovieDetails: React.FC<MovieDetailsProps> = ({ id }) => {
   const [movieDetails, setMovieDetails] = useState<IMovie | null>(null);
+  const [video, setVideo] = useState<string>("");
 
   useEffect(() => {
     let mounted: boolean = true;
@@ -47,6 +49,32 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ id }) => {
       mounted = false;
     }
   }, [id]);
+
+  useEffect(() => {
+    let mounted: boolean = true;
+
+    if (movieDetails !== null && movieDetails.video) {
+      api
+        .get(`movie/${id}/videos`, {
+        })
+        .then((value: AxiosResponse<any>) => {
+          const movie: IVideo = value.data;
+
+          if (movie === null) {
+            return;
+          }
+
+          if (!mounted) return;
+
+
+          setVideo(movie.key);
+        });
+    }
+
+    return () => {
+      mounted = false;
+    }
+  }, [movieDetails]);
 
   if (movieDetails === null) {
     return (
@@ -117,6 +145,13 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ id }) => {
           <img src={_posterPath} alt={title} />
         </Content>
       </SectionContent>
+      {video &&
+        (
+          <Trailler>
+            <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" />
+          </Trailler>
+        )
+      }
     </Section>
   )
 }

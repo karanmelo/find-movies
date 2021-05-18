@@ -10,11 +10,9 @@ export const Section = styled.div`
   flex-direction: column;  
   align-items: center;
 
-  background-color: var(--light-gray);
-
-  ${mediaQueries('md')`
-    flex-direction: row-reverse;
-  `};
+  & > :last-child {
+    margin-bottom: 16rem; 
+  }
 `;
 
 export const SectionContent = styled.div`
@@ -72,6 +70,8 @@ export const Content = styled.div`
 
     display: flex;
     flex-direction: column;
+
+    background-color: var(--light-gray);
 
     overflow-y: auto;
   }
@@ -169,5 +169,16 @@ export const SectionInformations = styled.section`
     flex-direction: row;
     flex-flow: wrap;
     gap: 5px;
+  }
+`;
+
+export const Trailler = styled.section`
+  width: 100%;
+  height: 50.5rem;
+  margin-top: 4.2rem;
+
+  & > iframe {
+    width: 100%;
+    height: 56rem;
   }
 `;
