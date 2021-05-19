@@ -5,7 +5,6 @@
   <img src="https://img.shields.io/static/v1?label=Next.js&message=framework&color=blue&style=for-the-badge&logo=next-dot-js"/>
   <img src="https://img.shields.io/static/v1?label=Docker%20Build&message=automated&color=blue&style=for-the-badge&logo=docker"/>
   <img src="https://img.shields.io/static/v1?label=Netlify&message=deploy&color=blue&style=for-the-badge&logo=netlify"/>
-  <img src="https://img.shields.io/static/v1?label=PWA&message=deploy&color=blue&style=for-the-badge&logo=netlify"/>
 </p>
 
 > Status do Projeto: :warning:
