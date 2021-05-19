@@ -9,7 +9,7 @@
     "docker:prod": "docker-compose -f ./docker-compose.yml up -d"
   },
   "engines": {
-    "node": ">=14",
+    "node": ">=12.18",
     "npm": ">=6"
   },
   "dependencies": {
