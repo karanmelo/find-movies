@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start -p $PORT",
+    "export": "next export",
     "docker:prod": "docker-compose -f ./docker-compose.yml up -d"
   },
   "engines": {
