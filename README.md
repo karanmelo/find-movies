@@ -82,7 +82,7 @@ yarn docker:prod
 Agora você pode acessar a aplicação no endereço:
 > localhost:3000/
 
-:warning: Caso o build seja feito no ambiente local, é necessário copiar o arquivo service-worker.js
+:warning: Caso o build seja feito no ambiente local, após executar o comando "yarn export", é necessário copiar o arquivo service-worker.js
 gerado no diretório /out e colar no diretório /public. Após o procedimento é necessário reiniciar a aplicação.
 
 ## Linguagens, dependencias e libs utilizadas :books:
@@ -97,3 +97,5 @@ gerado no diretório /out e colar no diretório /public. Após o procedimento é
 
 :memo:  Implementar um controle de páginas mais sofisticado e que consiga ter um controle maior 
 sobre a paginação da API da The Movie Database.
+
+:memo:  Configurar a imagem do Docker para PWA. Mapear o arquivo service-worker.js.
