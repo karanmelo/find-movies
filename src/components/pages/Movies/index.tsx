@@ -5,6 +5,7 @@ import api from '../../../services/api';
 
 import SearchBar from './SearchBar';
 import SectionMovie from './SectionMovie';
+import Navigation from './Navigation';
 
 import { Container } from './styled';
 
@@ -22,7 +23,7 @@ const Movies: React.FC = () => {
   }
 
   const pagination = (page: number, offset: number) => {
-    return movies.slice(page * offset, ((page * offset) + offset));
+    setCurrentMovies(movies.slice(page * offset, ((page * offset) + offset)));
   }
 
   const generateMovies = (_movies: IMovie[]) => {
@@ -120,7 +121,7 @@ const Movies: React.FC = () => {
     if (movies.length > 0) {
       if (!mounted) return;
 
-      setCurrentMovies(pagination(0, 5));
+      pagination(0, 5);
       return;
     }
 
@@ -203,6 +204,14 @@ const Movies: React.FC = () => {
           />
         )
       })}
+      {!executeSearch &&
+        (
+          <Navigation
+            onPagination={pagination}
+            numberOfElements={movies.length}
+          />
+        )
+      }
     </Container>
   )
 }

@@ -4,8 +4,9 @@ import styled from 'styled-components';
 const Input = styled.input`
   position: relative;
   width: 100%;
-  height: 4.8rem;
-  padding: 1.5rem 3.0rem;
+  min-height: 4.8rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
 
   font-family: Abel;
   font-size: 1.8rem;
