@@ -5,7 +5,8 @@
   "background_color": "#ffffff",
   "display": "standalone",
   "orientation": "portrait",
-  "start-url": "http://localhost:3000/",
+  "start_url": "./",
+  "scope": ".",
   "prefer_related_applications": true,
   "icons": [
     {

@@ -1,16 +1,26 @@
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import NextHead from 'next/head';
+//@ts-ignore
+import { register, unregister } from 'next-offline/runtime';
 
 type Props = {
   title: string
 }
 
 const Head: React.FC<Props> = (props: Props) => {
+  useEffect(() => {
+    register('/service-worker.js', { scope: '/' })
+
+    return () => {
+      unregister();
+    };
+  }, [])
+
   return (
     <NextHead>
-
       <meta charSet='utf-8' />
-      <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+      <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
       <meta name='viewport' content='width=device-width,initial-scale=1' />
       <meta name='description' content='Description' />
       <meta name='keywords' content='Keywords' />
