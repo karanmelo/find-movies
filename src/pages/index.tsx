@@ -8,7 +8,7 @@ const Home: NextPage = () => {
 };
 
 Home.getInitialProps = async (_ctx) => {
-  return {};
-}
+  return { id: 0 };
+};
 
 export default Home;

@@ -38,10 +38,10 @@ const MovieDetails: NextPage = () => {
   return (
     <Movie id={Number.parseInt(id)} />
   )
-}
+};
 
 MovieDetails.getInitialProps = async (_ctx) => {
-  return {};
-}
+  return { id: 0 };
+};
 
 export default MovieDetails;

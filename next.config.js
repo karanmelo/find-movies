@@ -1,3 +1,12 @@
+const withPWA = require('next-pwa');
+
+module.exports = withPWA({
+  pwa: {
+    dest: 'public',
+    swSrc: 'service-worker.js'
+  }
+});
+
 module.exports = {
   env: {
     TMDB_URL: process.env.TMDB_URL,

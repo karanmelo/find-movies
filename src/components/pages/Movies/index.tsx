@@ -1,4 +1,4 @@
-import { useEffect, useState, ChangeEvent, KeyboardEvent} from 'react';
+import { useEffect, useState, ChangeEvent, KeyboardEvent } from 'react';
 
 import { useAppContext, IMovie, IGenre } from '../context/AppContext';
 import api from '../../../services/api';
