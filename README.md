@@ -82,6 +82,8 @@ yarn docker:prod
 Agora você pode acessar a aplicação no endereço:
 > localhost:3000/
 
+:warning: Caso o build seja feito no ambiente local, é necessário copiar o arquivo service-worker.js
+gerado no diretório /out e colar no diretório /public. Após o procedimento é necessário reiniciar a aplicação.
 
 ## Linguagens, dependencias e libs utilizadas :books:
 
