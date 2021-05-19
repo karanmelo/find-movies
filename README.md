@@ -93,7 +93,7 @@ gerado no diretório /out e colar no diretório /public. Após o procedimento é
 
 ## Linguagens, dependencias e libs utilizadas :books:
 
-- [React](https://pt-br.reactjs.org/docs/create-a-new-react-app.html)
+- [React.js](https://pt-br.reactjs.org/docs/create-a-new-react-app.html)
 - [Next.js](https://nextjs.org/)
 - [Typescript](https://www.typescriptlang.org/)
 - [styled-components](https://styled-components.com/)
