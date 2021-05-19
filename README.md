@@ -49,6 +49,7 @@
 
 
 ## Como rodar a aplicação :arrow_forward:
+É necessáiro possuir as variáveis de ambiente local (.env.local) que estão definidas no arquivo next.config.js.
 
 No terminal, clone o projeto: 
 
@@ -77,8 +78,6 @@ Build com o Docker:
 ```
 yarn docker:prod
 ```
-
-É necessáiro possuir as variáveis de ambiente local (.env.local) que estão definidas no arquivo next.config.js.
 
 Agora você pode acessar a aplicação no endereço:
 > localhost:3000/
