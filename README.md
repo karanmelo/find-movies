@@ -7,6 +7,12 @@
   <img src="https://img.shields.io/static/v1?label=Netlify&message=deploy&color=blue&style=for-the-badge&logo=netlify"/>
 </p>
 
+<div align="center">
+  
+  ![pwa_status](https://user-images.githubusercontent.com/7671485/118863907-d1009600-b8b5-11eb-92a3-fcebe29127aa.png)
+  
+</div>
+
 > Status do Projeto: :warning:
 
 
