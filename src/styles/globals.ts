@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
+import { mediaQueries } from './mediaQueries';
+
 export default createGlobalStyle`  
   :root {
     --blue: #116193;
@@ -18,8 +20,11 @@ export default createGlobalStyle`
   }
 
   html {
-    /* a cada 1rem será considerada 10px */
-    font-size: 62.5%;
+    font-size: 45%;
+
+    ${mediaQueries('sm')`
+      font-size: 62.5%; 
+    `}; // a cada 1rem será considerada 10px
   }
 
   body {
