@@ -53,6 +53,7 @@
 
 :warning: [Node](https://nodejs.org/en/download/)
 :warning: [Yarn](https://classic.yarnpkg.com/en/docs/install#windows-stable)
+:warning: [Conta no TMDB](https://www.themoviedb.org/)
 
 
 ## Como rodar a aplicação :arrow_forward:
