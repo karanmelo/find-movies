@@ -52,6 +52,7 @@
 ## Pré-requisitos
 
 :warning: [Node](https://nodejs.org/en/download/)
+:warning: [Yarn](https://classic.yarnpkg.com/en/docs/install#windows-stable)
 
 
 ## Como rodar a aplicação :arrow_forward:
