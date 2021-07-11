@@ -1,7 +1,7 @@
-import { useState } from 'react';
+
 import styled from 'styled-components';
 
-const Input = styled.input`
+export const Input = styled.input`
   position: relative;
   width: 100%;
   min-height: 4.8rem;
@@ -39,18 +39,3 @@ const Input = styled.input`
     -webkit-appearance: none;
   }
 `;
-
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  id: string;
-  label?: string;
-}
-
-const SearchBar: React.FC<InputProps> = ({ ...rest }) => {
-  const [search, setSearch] = useState('');
-
-  return (
-    <Input type="search" value={search} onChange={e => setSearch(e.target.value)} {...rest} />
-  );
-}
-
-export default SearchBar;

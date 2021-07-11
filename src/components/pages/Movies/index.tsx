@@ -1,4 +1,4 @@
-import { useEffect, useState, ChangeEvent, KeyboardEvent } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useAppContext, IMovie, IGenre } from '../context/AppContext';
 import api from '../../../services/api';
@@ -18,7 +18,7 @@ const Movies: React.FC = () => {
 
   const filterGenresToSearch = (): IGenre[] => {
     return genres.filter((value: IGenre, index: number, array: IGenre[]) => {
-      return value.name.toUpperCase().indexOf(search.toUpperCase()) > -1;
+      return value.name.trim().toUpperCase().indexOf(search.toUpperCase()) > -1;
     })
   }
 
@@ -44,9 +44,15 @@ const Movies: React.FC = () => {
   }
 
   const getDataMovies = async () => {
+    if (!search) return;
+
+    setMovies([]);
+
     let genresToSearch: string = '';
 
-    filterGenresToSearch().map((genre: IGenre) => {
+    const genres: IGenre[] = filterGenresToSearch();
+
+    genres.map((genre: IGenre) => {
       genresToSearch = genresToSearch.concat(`${genre.id.toString()},`);
     });
 
@@ -54,7 +60,7 @@ const Movies: React.FC = () => {
       api
         .get('search/movie', {
           params: {
-            "query": search
+            "query": search.trim()
           }
         }),
       genresToSearch ? api
@@ -66,8 +72,10 @@ const Movies: React.FC = () => {
         }) : null
     ]);
 
+    let newMovies: IMovie[] = [];
+
     if (moviesByTitle.status === 200) {
-      const newMovies: IMovie[] = moviesByTitle.data.results
+      newMovies = [...newMovies, ...moviesByTitle.data.results
         .filter((movie: IMovie) => {
           const _title: string = movie.title.toUpperCase().replace(/[0-9!@#¨$%^&*)(+=._-]+/g, ' ');
           const _valueToSearch: string = search.toUpperCase().replace(/[0-9!@#¨$%^&*)(+=._-]+/g, ' ');
@@ -86,16 +94,13 @@ const Movies: React.FC = () => {
             release_date: movie.release_date,
             video: movie.video
           }
-        });
-
-      generateMovies(newMovies);
-
-      if (!alreadyResearched) setAlreadyResearched(true);
+        })
+      ];
     }
 
     if (moviesByGenres !== null) {
       if (moviesByGenres.status === 200) {
-        const newMovies: IMovie[] = moviesByGenres.data.results
+        newMovies = [...newMovies, ...moviesByGenres.data.results
           .map((movie: IMovie): IMovie => {
             return {
               id: movie.id,
@@ -109,10 +114,13 @@ const Movies: React.FC = () => {
               video: movie.video
             }
           })
-
-        generateMovies(newMovies);
+        ];
       }
     }
+
+    generateMovies(newMovies);
+
+    if (!alreadyResearched) setAlreadyResearched(true);
   }
 
   useEffect(() => {
@@ -145,6 +153,8 @@ const Movies: React.FC = () => {
       if (alreadyResearched) setAlreadyResearched(false);
     }
 
+    getDataMovies();
+
     return () => {
       mounted = false;
     }
@@ -165,22 +175,15 @@ const Movies: React.FC = () => {
     }
   }, [executeSearch]);
 
-  const handleKeyPressOnSearch = (key: string) => {
-    if (key === 'Enter') {
-      setMovies([]);
-      setExecuteSearch(true);
-    }
+  const handleChangeSearch = (value: string) => {
+    setSearch(value);
   }
 
   return (
     <Container>
       <SearchBar
-        autoFocus
-        id="search-movies"
-        placeholder="Busque um filme por nome ou gênero..."
         value={search}
-        onChange={(event: ChangeEvent<HTMLInputElement>) => setSearch(event.target.value)}
-        onKeyPress={(event: KeyboardEvent<HTMLInputElement>) => handleKeyPressOnSearch(event.key)}
+        onChange={handleChangeSearch}
       />
       {executeSearch && <h1>Buscando Dados</h1>}
       {!executeSearch
