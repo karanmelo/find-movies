@@ -11,7 +11,7 @@ interface InputProps {
 
 const SearchBar: React.FC<InputProps> = ({ value, onChange }) => {
   const [search, setSearch] = useState(value);
-  const debouncedChange = useDebounce(onChange, 2000);
+  const debouncedChange = useDebounce(onChange, 1000);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
