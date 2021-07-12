@@ -14,8 +14,16 @@ const SearchBar: React.FC<InputProps> = ({ value, onChange }) => {
   const debouncedChange = useDebounce(onChange, 1000);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearch(event.target.value);
-    debouncedChange(event.target.value);
+    const value = event.target.value;
+
+    setSearch(value);
+
+    if (!value) {
+      onChange('')
+      return;
+    };
+
+    debouncedChange(value);
   }
 
   return (
