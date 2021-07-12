@@ -17,7 +17,7 @@ const Page: React.FC = ({ children }) => {
 
   return (
     <Container>
-      <Head title="Farejador" />
+      <Head title="Farejador de Filmes" />
       <Header title="Farejador de Filmes" />
       <Content>
         {children}
