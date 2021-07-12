@@ -1,5 +1,5 @@
 import { useState, useEffect, MouseEvent, ReactElement } from 'react';
-import { Container, SelectedPage } from './styled';
+import { Container, SelectedPage } from './styles';
 
 type NavigationProps = {
   numberOfElements: number;

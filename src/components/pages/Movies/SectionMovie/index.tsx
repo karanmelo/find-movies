@@ -10,7 +10,7 @@ import {
   Container,
   Header,
   Content,
-} from './styled';
+} from './styles';
 
 type CardMovieProps = {
   movie: IMovie;

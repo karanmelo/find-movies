@@ -5,7 +5,7 @@ import { IGenre } from './types/MovieDetailsTypes';
 
 import {
   SectionInformations,
-} from './styled';
+} from './styles';
 
 type SectionInformationProps = {
   status: string;

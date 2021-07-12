@@ -17,7 +17,7 @@ import {
   Content,
   SectionSynopsis,
   Trailler,
-} from './styled';
+} from './styles';
 
 type MovieDetailsProps = {
   id: number;

@@ -7,7 +7,7 @@ import SearchBar from './SearchBar';
 import SectionMovie from './SectionMovie';
 import Navigation from './Navigation';
 
-import { Container } from './styled';
+import { Container } from './styles';
 
 const Movies: React.FC = () => {
   const [search, setSearch] = useState<string>('');
