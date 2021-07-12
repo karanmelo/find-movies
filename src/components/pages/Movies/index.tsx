@@ -6,6 +6,7 @@ import api from '../../../services/api';
 import SearchBar from './SearchBar';
 import SectionMovie from './SectionMovie';
 import Navigation from './Navigation';
+import Spinner from '../../Spinner';
 
 import { Container } from './styles';
 
@@ -149,11 +150,14 @@ const Movies: React.FC = () => {
       if (!mounted) return;
 
       setMovies([]);
+      setExecuteSearch(false);
 
       if (alreadyResearched) setAlreadyResearched(false);
+
+      return;
     }
 
-    getDataMovies();
+    setExecuteSearch(true);
 
     return () => {
       mounted = false;
@@ -165,10 +169,11 @@ const Movies: React.FC = () => {
 
     if (executeSearch && search !== '') {
       if (!mounted) return;
-      getDataMovies();
+      getDataMovies()
+        .then(() => {
+          setExecuteSearch(false);
+        });
     }
-
-    setExecuteSearch(false);
 
     return () => {
       mounted = false;
@@ -185,7 +190,10 @@ const Movies: React.FC = () => {
         value={search}
         onChange={handleChangeSearch}
       />
-      {executeSearch && <h1>Buscando Dados</h1>}
+      {executeSearch
+        && currentMovies.length === 0
+        && <Spinner />
+      }
       {!executeSearch
         && search.length > 0
         && currentMovies.length === 0
