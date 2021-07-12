@@ -36,7 +36,7 @@ export default createGlobalStyle`
   }
 
   body, input, button {
-    font-family: 'Abel', 'Lato', sans-serif;
+    font-family: 'Abel', 'Lato', sans-serif, 'Underdog', cursive;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
   } 

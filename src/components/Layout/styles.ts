@@ -12,7 +12,7 @@ export const Container = styled.header`
 
 export const Title = styled.h1`
   color: var(--ocean-blue);
-  font: normal normal normal 4rem/4rem "Abel";
+  font: normal normal normal 4rem/4rem "Underdog";
 
   cursor: pointer;
 `;

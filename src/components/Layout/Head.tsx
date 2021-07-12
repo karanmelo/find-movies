@@ -40,6 +40,7 @@ const Head: React.FC<Props> = (props: Props) => {
       <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet" />
       <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Underdog&display=swap" rel="stylesheet"></link>
     </NextHead>
   )
 }
